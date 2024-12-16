@@ -34,7 +34,7 @@ os.system('clear')
 print("\nSpeak now...")
 
 while True:
-    data = stream.read(chunk_size)
+    data = stream.read(chunk_size, exception_on_overflow = False)
     if recognizer.AcceptWaveform(data):
         result_json = json.loads(recognizer.Result())
         text = result_json.get('text', '')
